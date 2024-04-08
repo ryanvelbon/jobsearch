@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class JobListing extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        // 'company_id',
+        'title',
+        'description',
+        'salary',
+        'min_salary',
+        'max_salary',
+        'closing_date',
+        'status',
+        'published_at',
+        'expired_at',
+    ];
+
+    protected $casts = [
+        'published_at' => 'datetime',
+        'expired_at' => 'datetime',
+    ];
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+}
