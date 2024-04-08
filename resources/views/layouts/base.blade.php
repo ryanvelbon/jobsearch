@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full">
     <head>
         <meta charset="utf-8">
 
@@ -24,7 +24,7 @@
         @vite('resources/sass/app.scss')
     </head>
 
-    <body class="antialiased">
+    <body class="antialiased h-full">
         @yield('body')
         @livewireScripts
         @filamentScripts
