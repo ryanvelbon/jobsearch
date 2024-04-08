@@ -13,15 +13,15 @@ class CompanyFactory extends Factory
             'user_id' => \App\Models\User::factory(['account_type' => AccountType::Company]),
             'name' => fake()->company(),
             'description' => fake()->paragraph(),
-            'website' => fake()->url(),
+            'website' => fake()->domainName(),
             'email' => fake()->companyEmail(),
             'phone' => fake()->phoneNumber(),
             'logo' => null,
             'industry' => fake()->word(),
             'hq_address' => fake()->address(),
-            'size' => fake()->numberBetween(1, 5),
+            'size' => rand(1, 5),
             'founded_year' => fake()->year(),
-            'revenue' => fake()->numberBetween(100000, 100000000),
+            'revenue' => rand(1,50) * 10 ** rand(4,7),
         ];
     }
 }

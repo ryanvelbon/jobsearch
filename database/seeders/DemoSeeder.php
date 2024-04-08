@@ -11,7 +11,7 @@ class DemoSeeder extends Seeder
 {
     public function run(): void
     {
-        Company::factory(5)->create();
+        Company::factory(20)->create();
 
         Candidate::factory(100)->create();
     }
