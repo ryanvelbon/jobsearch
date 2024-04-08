@@ -2,7 +2,7 @@
 
 <div class="flex min-h-full">
     <div class="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
-        <div class="mx-auto w-full max-w-sm lg:w-96">
+        <div class="mx-auto w-full">
             <div class="sm:mx-auto sm:w-full sm:max-w-md">
                 <a href="{{ route('home') }}">
                     <x-logo class="w-auto h-16 mx-auto text-primary-600" />
@@ -18,9 +18,33 @@
 
             </div>
 
-            <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+            <div class="p-4">
                 <div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
                     <form wire:submit.prevent="register">
+
+                        <div x-data="{ accountType: null }">
+                            <div class="flex flex-col gap-2">
+                                <label
+                                    class="radio-btn"
+                                    :class="{'bg-primary-500 text-white': accountType == 'company', 'bg-gray-100 hover:bg-gray-200': accountType != 'company'}"
+                                >
+                                    <input wire:model="accountType" x-model="accountType" type="radio" value="company" class="hidden">
+                                    <span class="ml-2 text-sm font-medium">I'm a company</span>
+                                </label>
+                                <label
+                                    class="radio-btn"
+                                    :class="{'bg-primary-500 text-white': accountType == 'candidate', 'bg-gray-100 hover:bg-gray-200': accountType != 'candidate'}"
+                                >
+                                    <input wire:model="accountType" x-model="accountType" type="radio" value="candidate" class="hidden">
+                                    <span class="ml-2 text-sm font-medium">I'm a candidate</span>
+                                </label>
+                            </div>
+
+
+                            @error('accountType')
+                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
 
                         <div class="mt-6">
                             <label for="email" class="block text-sm font-medium text-gray-700 leading-5">

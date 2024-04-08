@@ -55,6 +55,11 @@
    @apply mx-auto max-w-7xl px-6 lg:px-8;
 }
 
+.radio-btn {
+    @apply cursor-pointer select-none border border-t border-l border-2 border-black text-center py-3;
+}
+
+
 /**
  * This injects all of Tailwind's utility classes, generated based on your
  * config file.
