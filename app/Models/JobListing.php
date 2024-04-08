@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Enums\ListingStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class JobListing extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         // 'company_id',
@@ -25,6 +27,7 @@ class JobListing extends Model
     protected $casts = [
         'published_at' => 'datetime',
         'expired_at' => 'datetime',
+        'status' => ListingStatus::class,
     ];
 
     public function company()
