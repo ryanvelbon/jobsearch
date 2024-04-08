@@ -34,4 +34,9 @@ class JobListing extends Model
     {
         return $this->belongsTo(Company::class);
     }
+
+    public function scopePublished($query)
+    {
+        return $query->where('status', ListingStatus::Published);
+    }
 }

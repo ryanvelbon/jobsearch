@@ -9,9 +9,9 @@
     <div class="container">
         <h2 class="text-5xl font-semibold text-gray-800">Find a job</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-        <div>
-            <button type="button" class="btn btn-primary btn-lg">Find a job</button>
-            <button type="button" class="btn btn-primary btn-lg">Other button</button>
+        <div class="mt-12">
+            <a href="{{ route('listings.index') }}" class="btn btn-primary btn-lg">Find a job</a>
+            <a href="#" class="btn btn-primary btn-lg">Other button</a>
         </div>
     </div>
 </section>
