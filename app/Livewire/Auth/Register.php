@@ -27,7 +27,7 @@ class Register extends Component
         $this->validate([
             'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'min:8'],
-            'accountType' => ['required', Rule::in(AccountType::cases())],
+            'accountType' => ['required', Rule::in(AccountType::cases())],// refactor: this is hackable...
         ]);
 
         $user = User::create([

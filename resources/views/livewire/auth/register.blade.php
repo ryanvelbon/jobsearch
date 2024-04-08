@@ -23,16 +23,16 @@
                     <form wire:submit.prevent="register">
 
                         <div x-data="{ accountType: null }">
-                            <div class="flex flex-col gap-2">
+                            <div class="flex flex-row gap-2">
                                 <label
-                                    class="radio-btn"
+                                    class="radio-btn grow"
                                     :class="{'bg-primary-500 text-white': accountType == 'company', 'bg-gray-100 hover:bg-gray-200': accountType != 'company'}"
                                 >
                                     <input wire:model="accountType" x-model="accountType" type="radio" value="company" class="hidden">
                                     <span class="ml-2 text-sm font-medium">I'm a company</span>
                                 </label>
                                 <label
-                                    class="radio-btn"
+                                    class="radio-btn grow"
                                     :class="{'bg-primary-500 text-white': accountType == 'candidate', 'bg-gray-100 hover:bg-gray-200': accountType != 'candidate'}"
                                 >
                                     <input wire:model="accountType" x-model="accountType" type="radio" value="candidate" class="hidden">
@@ -52,7 +52,7 @@
                             </label>
 
                             <div class="mt-1 rounded-md shadow-sm">
-                                <input wire:model.lazy="email" id="email" type="email" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('email') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror" />
+                                <input wire:model="email" id="email" type="email" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('email') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror" />
                             </div>
 
                             @error('email')
@@ -66,7 +66,7 @@
                             </label>
 
                             <div class="mt-1 rounded-md shadow-sm">
-                                <input wire:model.lazy="password" id="password" type="password" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('password') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror" />
+                                <input wire:model="password" id="password" type="password" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('password') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror" />
                             </div>
 
                             @error('password')
