@@ -17,7 +17,7 @@ class CandidateResource extends Resource
 {
     protected static ?string $model = Candidate::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-users';
 
     public static function form(Form $form): Form
     {
@@ -36,9 +36,6 @@ class CandidateResource extends Resource
                 Forms\Components\Textarea::make('bio')
                     ->maxLength(65535)
                     ->columnSpanFull(),
-                Forms\Components\Textarea::make('avatar')
-                    ->maxLength(65535)
-                    ->columnSpanFull(),
             ]);
     }
 
@@ -46,18 +43,18 @@ class CandidateResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('first_name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('last_name')
+                Tables\Columns\TextColumn::make('full_name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('sex')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('dob')
+                    ->label('Birthday')
                     ->date()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('age'),
+                Tables\Columns\TextColumn::make('user.username')
+                    ->label('Account')
+                    ->description(fn (Candidate $record): string => $record->user->email),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

@@ -17,7 +17,7 @@ class CompanyResource extends Resource
 {
     protected static ?string $model = Company::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-building-office';
 
     public static function form(Form $form): Form
     {
@@ -58,29 +58,41 @@ class CompanyResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user_id')
-                    ->numeric()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('website')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('email')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('phone')
+                    ->description(fn (Company $record): string => $record->hq_address)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('industry')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('hq_address')
-                    ->searchable(),
-                Tables\Columns\IconColumn::make('size')
-                    ->boolean(),
+                Tables\Columns\TextColumn::make('size'),
                 Tables\Columns\TextColumn::make('founded_year')
-                    ->numeric()
+                    ->label('Year')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('revenue')
-                    ->numeric()
+                    ->size('xs')
+                    ->money('EUR')
                     ->sortable(),
+                Tables\Columns\TextColumn::make('website')
+                    ->url(fn (Company $record): string => 'https://' . $record->website ?? '#')
+                    ->openUrlInNewTab()
+                    ->icon('heroicon-m-link')
+                    ->size('xs')
+                    ->limit(25)
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('email')
+                    ->copyable()
+                    ->copyMessage('Email address copied')
+                    ->copyMessageDuration(1500)
+                    ->size('xs')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('phone')
+                    ->copyable()
+                    ->copyMessage('Phone number copied')
+                    ->copyMessageDuration(1500)
+                    ->size('xs')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('user.username')
+                    ->label('Account')
+                    ->description(fn (Company $record): string => $record->user->email),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
