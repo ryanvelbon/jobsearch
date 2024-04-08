@@ -1,12 +1,12 @@
 
-A starter kit for building customer-facing web apps with TALL preset (auth) & Filament.
+A Job Search app built with TALL stack and filament.
 
-- [How to Install and Configure TailwindCSS](https://laraveldaily.com/post/filament-appointment-booking-re-use-admin-panel-form-on-public-page)
-
-
-# UI
-- [Buttons](https://getcssscan.com/css-buttons-examples)
-
+Features
+* user can register as candidate or company
+* company can post a job listing
+* candidate can search jobs
+* candidate can apply for a job
+* admin can manage users and listings
 
 
 Create sample data (optional)
