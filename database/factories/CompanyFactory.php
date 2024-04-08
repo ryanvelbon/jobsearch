@@ -11,17 +11,17 @@ class CompanyFactory extends Factory
     {
         return [
             'user_id' => \App\Models\User::factory(['account_type' => AccountType::Company]),
-            'name' => $this->faker->company(),
-            'description' => $this->faker->paragraph(),
-            'website' => $this->faker->url(),
-            'email' => $this->faker->companyEmail(),
-            'phone' => $this->faker->phoneNumber(),
+            'name' => fake()->company(),
+            'description' => fake()->paragraph(),
+            'website' => fake()->url(),
+            'email' => fake()->companyEmail(),
+            'phone' => fake()->phoneNumber(),
             'logo' => null,
-            'industry' => $this->faker->word(),
-            'hq_address' => $this->faker->address(),
-            'size' => $this->faker->numberBetween(1, 5),
-            'founded_year' => $this->faker->year(),
-            'revenue' => $this->faker->numberBetween(100000, 100000000),
+            'industry' => fake()->word(),
+            'hq_address' => fake()->address(),
+            'size' => fake()->numberBetween(1, 5),
+            'founded_year' => fake()->year(),
+            'revenue' => fake()->numberBetween(100000, 100000000),
         ];
     }
 }
