@@ -1,6 +1,9 @@
 <div class="bg-gray-200">
     <div class="container">
         <h1 class="text-4xl font-bold text-center py-6">Jobs</h1>
+        <div class="mb-8">
+            <input type="text" wire:model.live="search" placeholder="search keywords">
+        </div>
         <ul>
             @forelse($listings as $listing)
                 <a href="{{ route('listings.show', $listing) }}">

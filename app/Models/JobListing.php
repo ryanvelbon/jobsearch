@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\ListingStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -38,5 +39,12 @@ class JobListing extends Model
     public function scopePublished($query)
     {
         return $query->where('status', ListingStatus::Published);
+    }
+
+    public static function search($keyword)
+    {
+        return static::query()->where(function ($query) use ($keyword) {
+            $query->where('title', 'LIKE', '%' . $keyword . '%');
+        });
     }
 }
