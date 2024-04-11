@@ -7,8 +7,8 @@
         </div>
     </section>
     <section class="container py-8 grid md:grid-cols-3 gap-8">
-        <div class="col-span-2">
-            <ul class="mx-auto max-w-2xl">
+        <div class="col-span-2 max-w-2xl">
+            <ul>
                 @forelse($listings as $listing)
                     <a href="{{ route('listings.show', $listing) }}">
                         <li class="group p-4 mb-4 bg-white border border-1 border-gray-300 rounded-xl">
