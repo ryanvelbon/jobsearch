@@ -17,8 +17,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome')->name('home');
 
-Route::middleware('auth')->group(function () {
+Route::middleware('account:candidate')->group(function () {
     Route::get('candidate/profile/edit', CandidateEdit::class)->name('candidate.profile.edit');
+});
+
+Route::middleware('account:company')->group(function () {
     Route::get('company/profile/edit', CompanyEdit::class)->name('company.profile.edit');
 });
 
