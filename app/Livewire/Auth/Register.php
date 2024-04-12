@@ -39,15 +39,17 @@ class Register extends Component
 
         if ($this->accountType === AccountType::Candidate->value) {
             $user->candidate()->create([]);
+            $redirectRoute = 'candidate.profile.edit';
         } elseif ($this->accountType === AccountType::Company->value) {
             $user->company()->create([]);
+            $redirectRoute = 'company.profile.edit';
         }
 
         event(new Registered($user));
 
         Auth::login($user, true);
 
-        return redirect()->intended(route('home'));
+        return redirect()->intended(route($redirectRoute));
     }
 
     public function render()
