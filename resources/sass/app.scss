@@ -56,7 +56,15 @@
 }
 
 .radio-btn {
-    @apply cursor-pointer select-none border border-t border-l border-2 border-black text-center py-3;
+    @apply cursor-pointer select-none border border-gray-300 text-center text-gray-500 rounded py-2;
+}
+
+.radio-btn-active {
+   @apply bg-primary-200 text-primary-600 border-primary-500;
+}
+
+.radio-btn-inactive {
+   @apply bg-white hover:bg-gray-100;
 }
 
 

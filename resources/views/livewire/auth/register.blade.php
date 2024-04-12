@@ -12,28 +12,28 @@
                     Create an account
                 </h2>
 
-                <p class="text-gray-600 text-center my-8">
+                <p class="text-gray-600 text-center mt-8">
                     Select employer or job seeker and setup your profile in the next step
                 </p>
 
             </div>
 
-            <div class="p-4">
-                <div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
+            <div>
+                <div class="px-4 py-8 bg-white sm:rounded-lg sm:px-10">
                     <form wire:submit.prevent="register">
 
                         <div x-data="{ accountType: null }">
                             <div class="flex flex-row gap-2">
                                 <label
                                     class="radio-btn grow"
-                                    :class="{'bg-primary-500 text-white': accountType == 'company', 'bg-gray-100 hover:bg-gray-200': accountType != 'company'}"
+                                    :class="{'radio-btn-active': accountType == 'company', 'radio-btn-inactive': accountType != 'company'}"
                                 >
                                     <input wire:model="accountType" x-model="accountType" type="radio" value="company" class="hidden">
                                     <span class="ml-2 text-sm font-medium">I'm a company</span>
                                 </label>
                                 <label
                                     class="radio-btn grow"
-                                    :class="{'bg-primary-500 text-white': accountType == 'candidate', 'bg-gray-100 hover:bg-gray-200': accountType != 'candidate'}"
+                                    :class="{'radio-btn-active': accountType == 'candidate', 'radio-btn-inactive': accountType != 'candidate'}"
                                 >
                                     <input wire:model="accountType" x-model="accountType" type="radio" value="candidate" class="hidden">
                                     <span class="ml-2 text-sm font-medium">I'm a candidate</span>
@@ -94,6 +94,9 @@
         </div>
     </div>
     <div class="relative hidden w-0 flex-1 lg:block">
+        <div class="absolute inset-0 z-50 bg-primary-600/80 flex items-end justify-center pb-16">
+            <p class="text-white text-5xl font-bold text-center">Connecting<br>Businesses with Talent</p>
+        </div>
         <img class="absolute inset-0 h-full w-full object-cover" src="https://images.unsplash.com/photo-1549923746-c502d488b3ea" alt="">
     </div>
 </div>
