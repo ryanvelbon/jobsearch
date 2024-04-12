@@ -45,4 +45,24 @@ class User extends Authenticatable implements FilamentUser, HasName
     {
         return $this->username;
     }
+
+    public function candidate()
+    {
+        return $this->hasOne(Candidate::class);
+    }
+
+    public function company()
+    {
+        return $this->hasOne(Company::class);
+    }
+
+    public function scopeCandidates($query)
+    {
+        return $query->where('account_type', AccountType::Candidate);
+    }
+
+    public function scopeCompanies($query)
+    {
+        return $query->where('account_type', AccountType::Company);
+    }
 }

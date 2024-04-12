@@ -37,6 +37,12 @@ class Register extends Component
             'account_type' => $this->accountType,
         ]);
 
+        if ($this->accountType === AccountType::Candidate->value) {
+            $user->candidate()->create([]);
+        } elseif ($this->accountType === AccountType::Company->value) {
+            $user->company()->create([]);
+        }
+
         event(new Registered($user));
 
         Auth::login($user, true);
