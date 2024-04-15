@@ -51,6 +51,8 @@ class CandidateEdit extends Component
             'dob' => $this->dob,
             'bio' => $this->bio,
         ]);
+
+        session()->flash('success', 'Profile successfully updated.');
     }
 
 

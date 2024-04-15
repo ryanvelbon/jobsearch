@@ -93,8 +93,18 @@
         
     </div>
 
-    <div class="mt-6 flex items-center justify-end gap-x-2">
-        <button type="button" class="btn">Cancel</button>
-        <button type="submit" class="btn btn-primary">Save</button>
+    <div class="mt-6 flex items-center justify-between gap-x-2">
+        <div>
+            @if(session('success'))
+                <span class="flash flash-success">{{ session('success') }}</span>
+            @endif
+            @error('*')
+                <span class="flash flash-danger">There are errors</span>
+            @enderror
+        </div>
+        <div>
+            <button type="button" class="btn">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
     </div>
 </form>
