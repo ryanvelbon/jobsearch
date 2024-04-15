@@ -2,12 +2,13 @@
 
 namespace App\Livewire;
 
+use Illuminate\Validation\Rule;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class CandidateEdit extends Component
 {
-    #[Validate('required|unique:users|alpha_num:ascii|min:3|max:30')]
+    #[Validate]
     public $username;
 
     #[Validate('required|min:2|max:25|regex:/^[a-z ,.\'-]+$/i')]
@@ -24,6 +25,15 @@ class CandidateEdit extends Component
 
     #[Validate('max:300')]
     public $bio;
+
+    public function rules()
+    {
+        return [
+            'username' => [
+                'required','alpha_num:ascii','min:3','max:30',
+                Rule::unique('users')->ignore(auth()->id())],
+        ];
+    }
 
     public function mount()
     {
