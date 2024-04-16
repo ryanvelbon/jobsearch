@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Admin\Resources;
 
-use App\Filament\Resources\JobListingResource\Pages;
-use App\Filament\Resources\JobListingResource\RelationManagers;
+use App\Filament\Admin\Resources\JobListingResource\Pages;
+use App\Filament\Admin\Resources\JobListingResource\RelationManagers;
 use App\Models\JobListing;
 use Filament\Forms;
 use Filament\Forms\Form;

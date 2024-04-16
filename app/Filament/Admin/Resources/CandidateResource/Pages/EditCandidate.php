@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\JobListingResource\Pages;
+namespace App\Filament\Admin\Resources\CandidateResource\Pages;
 
-use App\Filament\Resources\JobListingResource;
+use App\Filament\Admin\Resources\CandidateResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditJobListing extends EditRecord
+class EditCandidate extends EditRecord
 {
-    protected static string $resource = JobListingResource::class;
+    protected static string $resource = CandidateResource::class;
 
     protected function getHeaderActions(): array
     {
