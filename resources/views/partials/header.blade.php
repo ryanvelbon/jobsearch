@@ -4,17 +4,35 @@
             <a wire:navigate href="{{ route('home') }}">
                 <x-logo class="h-8 text-primary-600" />
             </a>
-            <a href="#" class="hidden md:block text-sm font-semibold leading-6 text-gray-900">Link</a>
-            <a href="#" class="hidden md:block text-sm font-semibold leading-6 text-gray-900">Link</a>
+            <a href="#" class="hidden lg:block text-sm font-semibold leading-6 text-gray-900">Link</a>
+            <a href="#" class="hidden lg:block text-sm font-semibold leading-6 text-gray-900">Link</a>
         </div>
         <div class="flex flex-1 items-center justify-end gap-x-6">
             @auth
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit" class="text-sm font-semibold leading-6 text-gray-900">
-                        <span>Sign out</span>
-                    </button>
-                </form>
+                <!-- Profile dropdown -->
+                <div x-data="{ open: false }" @click.outside="open = false" class="hidden lg:block relative flex-shrink-0">
+                    <div>
+                        <button @click="open = !open" type="button" class="relative flex rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                            <span class="absolute -inset-1.5"></span>
+                            <span class="sr-only">Open user menu</span>
+                            <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                        </button>
+                    </div>
+
+                    <div x-show="open" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1"
+                        x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95"
+                    >
+                        <!-- Active: "bg-gray-100", Not Active: "" -->
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
+                        <form method="POST" action="{{ route('logout') }}" role="menuitem" tabindex="-1" id="user-menu-item-2">
+                            @csrf
+                            <button type="submit" class="block px-4 py-2 text-sm text-gray-700">
+                                <span>Sign out</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
             @else
                 <a href="{{ route('login') }}" class="hidden lg:block text-sm font-semibold leading-6 text-gray-900">Sign in</a>
                 <a href="{{ route('register') }}" class="hidden lg:block text-sm font-semibold leading-6 text-gray-900">Register</a>
@@ -59,6 +77,7 @@
                     </div>
                     <div class="py-6">
                         @auth
+                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Profile</a>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <button type="submit" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
