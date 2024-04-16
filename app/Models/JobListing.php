@@ -13,7 +13,7 @@ class JobListing extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        // 'company_id',
+        'company_id',
         'title',
         'description',
         'salary',

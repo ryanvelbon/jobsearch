@@ -2,6 +2,7 @@
 
 namespace App\Filament\Company\Resources;
 
+use App\Enums\ListingStatus;
 use App\Filament\Company\Resources\JobListingResource\Pages;
 use App\Filament\Company\Resources\JobListingResource\RelationManagers;
 use App\Models\JobListing;
@@ -17,35 +18,41 @@ class JobListingResource extends Resource
 {
     protected static ?string $model = JobListing::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-briefcase';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('company_id')
-                    ->required()
-                    ->numeric(),
                 Forms\Components\TextInput::make('title')
                     ->required()
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('description')
+                    ->maxLength(80),
+                Forms\Components\Select::make('status')
+                    ->options(ListingStatus::class),
+                Forms\Components\RichEditor::make('description')
                     ->required()
-                    ->maxLength(65535)
-                    ->columnSpanFull(),
+                    ->maxLength(2000)
+                    ->columnSpanFull()
+                    ->toolbarButtons([
+                        'bold',
+                        'bulletList',
+                        'italic',
+                        'orderedList',
+                        'redo',
+                        'strike',
+                        'underline',
+                        'undo',
+                    ]),
                 Forms\Components\TextInput::make('salary')
-                    ->numeric(),
+                    ->numeric()
+                    ->prefix('€'),
                 Forms\Components\TextInput::make('min_salary')
-                    ->numeric(),
+                    ->numeric()
+                    ->prefix('€'),
                 Forms\Components\TextInput::make('max_salary')
-                    ->numeric(),
+                    ->numeric()
+                    ->prefix('€'),
                 Forms\Components\DatePicker::make('closing_date'),
-                Forms\Components\TextInput::make('status')
-                    ->required()
-                    ->maxLength(255)
-                    ->default('draft'),
-                Forms\Components\DateTimePicker::make('published_at'),
-                Forms\Components\DateTimePicker::make('expired_at'),
             ]);
     }
 
@@ -53,8 +60,6 @@ class JobListingResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('company.name')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('title')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('salary')

@@ -38,7 +38,7 @@
                 <a href="{{ route('register') }}" class="hidden lg:block text-sm font-semibold leading-6 text-gray-900">Register</a>
             @endauth
 
-            <a href="#" class="btn btn-primary">Post a job</a>
+            <a href="{{ route('filament.company.resources.job-listings.create') }}" class="btn btn-primary">Post a job</a>
         </div>
         <div class="flex lg:hidden">
             <button @click="open = true" type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
@@ -59,7 +59,7 @@
                     <span class="sr-only">Your Company</span>
                     <x-logo class="h-8 text-primary-600" />
                 </a>
-                <a href="#" class="ml-auto btn btn-primary">Post a job</a>
+                <a href="{{ route('filament.company.resources.job-listings.create') }}" class="ml-auto btn btn-primary">Post a job</a>
                 <button @click="open = false" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
                     <span class="sr-only">Close menu</span>
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
