@@ -36,9 +36,20 @@ class User extends Authenticatable implements FilamentUser, HasName
 
     public function canAccessPanel(Panel $panel): bool
     {
-        return true;
+        $user = auth()->user();
 
-        // return str_ends_with($this->email, '@yourdomain.com') && $this->hasVerifiedEmail();
+        switch ($panel->getId()) {
+            case 'company':
+                return $user->isCompany();
+                break;
+
+            case 'admin':
+                return str_ends_with($this->email, '@yourdomain.com') && $this->hasVerifiedEmail();
+
+            default:
+                return false;
+                break;
+        }
     }
 
     public function getFilamentName(): string
@@ -64,5 +75,15 @@ class User extends Authenticatable implements FilamentUser, HasName
     public function scopeCompanies($query)
     {
         return $query->where('account_type', AccountType::Company);
+    }
+
+    public function isCandidate()
+    {
+        return $this->account_type->value === 'candidate';
+    }
+
+    public function isCompany()
+    {
+        return $this->account_type->value === 'company';
     }
 }
