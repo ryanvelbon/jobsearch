@@ -1,9 +1,24 @@
 <div>
-    <section class="py-4 border border-b-1 border-gray-300">
-        <div class="container">
-            <div>
-                <input type="text" wire:model.live="search" placeholder="search keywords">
-            </div>
+    <section class="py-6 bg-primary-900">
+        <div class="mx-auto max-w-5xl px-6 lg:px-8">
+            <form id="search-form" method="GET">
+                <div class="flex flex-row gap-2">
+                    <div class="flex flex-col gap-2">
+                        <label>What</label>
+                        <input wire:model.live="search" type="text" placeholder="Enter keywords">
+                    </div>
+                    <div class="flex flex-col gap-2 justify-end">
+                        <input type="text" placeholder="Any classification">
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label>Where</label>
+                        <input type="text" placeholder="Enter suburb, city, or region">
+                    </div>
+                    <div class="flex flex-col justify-end">
+                        <button type="submit" class="px-6 py-3.5 rounded-lg uppercase font-bold tracking-wide bg-secondary-500 hover:bg-secondary-400 text-white">Search</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </section>
     <section class="container py-8 grid md:grid-cols-3 gap-8">

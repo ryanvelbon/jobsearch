@@ -51,6 +51,10 @@
    @apply text-white bg-secondary-500 hover:bg-secondary-600 focus:ring-secondary-300 dark:bg-secondary-400 dark:hover:bg-secondary-500 dark:focus:ring-secondary-600;
 }
 
+.btn-outline-primary {
+   @apply text-primary-600 border border-2 border-primary-600 bg-white hover:bg-primary-100;
+}
+
 .container {
    @apply mx-auto max-w-7xl px-6 lg:px-8;
 }
@@ -102,4 +106,13 @@
 
 [x-cloak] {
     display: none !important;
+}
+
+#search-form {
+   label {
+      @apply font-bold text-white;
+   }
+   input[type="text"] {
+      @apply text-lg px-4 py-3 rounded-lg w-full ring-1 ring-white/10 focus:ring-4 focus:ring-primary-200;
+   }
 }
