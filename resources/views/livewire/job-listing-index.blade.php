@@ -15,7 +15,7 @@
                             <h3 class="font-bold text-lg text-gray-800 group-hover:underline">{{ $listing->title }}</h3>
                             <p class="text-base text-gray-800">{{ $listing->company->name }}</p>
                             <p class="text-sm text-gray-600 my-4">{{ $listing->description }}</p>
-                            <p class="text-xs text-gray-500">Posted {{ $listing->published_at->diffForHumans() }}</p>
+                            <p class="text-xs text-gray-500">Posted {{ $listing->published_at?->diffForHumans() }}</p>
                         </li>
                     </a>
                 @empty

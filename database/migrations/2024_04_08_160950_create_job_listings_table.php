@@ -14,8 +14,8 @@ return new class extends Migration
             $table->text('description');
             $table->foreignId('company_id')->constrained()->onDelete('CASCADE');
             $table->decimal('salary', 10, 2)->nullable();
-            $table->unsignedSmallInteger('min_salary')->nullable();
-            $table->unsignedSmallInteger('max_salary')->nullable();
+            $table->unsignedInteger('min_salary')->nullable();
+            $table->unsignedInteger('max_salary')->nullable();
             $table->date('closing_date')->nullable();
             $table->string('status')->default('draft');
             $table->timestamp('published_at')->nullable();
