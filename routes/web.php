@@ -15,7 +15,7 @@ use App\Livewire\JobListingIndex;
 use Illuminate\Support\Facades\Route;
 
 
-Route::view('/', 'welcome')->name('home');
+Route::get('/', JobListingIndex::class)->name('home');
 
 Route::middleware('account:candidate')->group(function () {
     Route::get('candidate/profile/edit', CandidateEdit::class)->name('candidate.profile.edit');
