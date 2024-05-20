@@ -22,7 +22,7 @@ class JobListingIndex extends Component
     public function render()
     {
         $listings = JobListing::search($this->search)
-            ->with('company')
+            ->with('company', 'tags')
             ->published()
             ->paginate(10);
 

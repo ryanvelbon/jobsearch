@@ -51,11 +51,24 @@
             <ul>
                 @forelse($listings as $listing)
                     <a href="{{ route('listings.show', $listing) }}">
-                        <li class="group p-4 mb-4 bg-white border border-1 border-gray-300 rounded-xl">
-                            <h3 class="font-bold text-lg text-gray-800 group-hover:underline">{{ $listing->title }}</h3>
-                            <p class="text-base text-gray-800">{{ $listing->company->name }}</p>
-                            <p class="text-sm text-gray-600 my-4">{{ $listing->description }}</p>
-                            <p class="text-xs text-gray-500">Posted {{ $listing->published_at?->diffForHumans() }}</p>
+                        <li class="border border-gray-200 hover:border-gray-400 rounded-lg flex justify-between gap-4 px-4 py-6 mb-6 shadow-xl">
+                            <div>
+                                <p class="text-gray-700 text-sm">{{ $listing->company->name }}</p>
+                                <p class="font-bold text-lg text-nowrap">{{ $listing->title }}</p>
+                                <p class="text-gray-500 text-sm">Full Time</p>
+                            </div>
+                            <div class="flex flex-col justify-between items-end gap-4">
+                                <div class="text-gray-700 text-sm">
+                                    <span>Remote, EU</span>
+                                    <span>·</span>
+                                    <span>{{ $listing->published_at?->diffForHumans() }}</span>
+                                </div>
+                                <ul class="flex flex-row-reverse flex-wrap-reverse gap-1">
+                                    @foreach($listing->tags->take(5) as $tag)
+                                        <li class="bg-primary-100 text-primary-600 rounded-full px-2.5 py-1 text-xs">{{ $tag->name }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </li>
                     </a>
                 @empty
