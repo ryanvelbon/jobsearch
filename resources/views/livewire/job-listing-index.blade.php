@@ -64,7 +64,7 @@
                                     <span>{{ $listing->published_at?->diffForHumans() }}</span>
                                 </div>
                                 <ul class="flex flex-row-reverse flex-wrap-reverse gap-1">
-                                    @foreach($listing->tags->take(5) as $tag)
+                                    @foreach($listing->tagsWithType('skill')->take(5) as $tag)
                                         <li class="bg-primary-100 text-primary-600 rounded-full px-2.5 py-1 text-xs">{{ $tag->name }}</li>
                                     @endforeach
                                 </ul>
