@@ -5,7 +5,7 @@
                 <div class="flex flex-row gap-2">
                     <div class="flex flex-col gap-2">
                         <label>What</label>
-                        <input wire:model.live="search" type="text" placeholder="Enter keywords">
+                        <livewire:keyword-combobox />
                     </div>
                     <div class="flex flex-col gap-2 justify-end">
                         <input type="text" placeholder="Any classification">
