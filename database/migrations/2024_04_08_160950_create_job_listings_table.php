@@ -13,6 +13,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->foreignId('company_id')->constrained()->onDelete('CASCADE');
+            $table->string('work_type')->nullable();
             $table->decimal('salary', 10, 2)->nullable();
             $table->unsignedInteger('min_salary')->nullable();
             $table->unsignedInteger('max_salary')->nullable();

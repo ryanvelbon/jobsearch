@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\ListingStatus;
+use App\Enums\WorkType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -17,6 +18,7 @@ class JobListing extends Model
         'company_id',
         'title',
         'description',
+        'work_type',
         'salary',
         'min_salary',
         'max_salary',
@@ -29,6 +31,7 @@ class JobListing extends Model
     protected $casts = [
         'published_at' => 'datetime',
         'expired_at' => 'datetime',
+        'work_type' => WorkType::class,
         'status' => ListingStatus::class,
     ];
 

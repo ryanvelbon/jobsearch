@@ -55,7 +55,7 @@
                             <div>
                                 <p class="text-gray-700 text-sm">{{ $listing->company->name }}</p>
                                 <p class="font-bold text-lg text-nowrap">{{ $listing->title }}</p>
-                                <p class="text-gray-500 text-sm">Full Time</p>
+                                <p class="text-gray-500 text-sm">{{ $listing->work_type }}</p>
                             </div>
                             <div class="flex flex-col justify-between items-end gap-4">
                                 <div class="text-gray-700 text-sm">

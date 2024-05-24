@@ -3,6 +3,7 @@
 namespace App\Filament\Company\Resources;
 
 use App\Enums\ListingStatus;
+use App\Enums\WorkType;
 use App\Filament\Company\Resources\JobListingResource\Pages;
 use App\Filament\Company\Resources\JobListingResource\RelationManagers;
 use App\Models\JobListing;
@@ -43,6 +44,8 @@ class JobListingResource extends Resource
                         'underline',
                         'undo',
                     ]),
+                Forms\Components\Select::make('work_type')
+                    ->options(WorkType::class),
                 Forms\Components\TextInput::make('salary')
                     ->numeric()
                     ->prefix('€'),
@@ -63,6 +66,7 @@ class JobListingResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('title')
                     ->searchable(),
+                Tables\Columns\BadgeColumn::make('work_type'),
                 Tables\Columns\TextColumn::make('salary')
                     ->numeric()
                     ->money('EUR')
