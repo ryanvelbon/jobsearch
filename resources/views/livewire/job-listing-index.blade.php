@@ -1,4 +1,5 @@
 <div>
+    <x-loading />
     <section class="py-6 bg-primary-900">
         <div class="mx-auto max-w-6xl px-6 lg:px-8">
             <form id="search-form" method="GET">
