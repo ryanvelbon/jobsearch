@@ -110,9 +110,6 @@
 }
 
 #search-form {
-   label {
-      @apply font-bold text-white;
-   }
    input[type="text"] {
       @apply text-lg px-4 py-3 rounded-lg w-full ring-1 ring-white/10 focus:ring-4 focus:ring-primary-200;
    }

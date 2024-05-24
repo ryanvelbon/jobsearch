@@ -4,14 +4,14 @@
             <form id="search-form" method="GET">
                 <div class="flex flex-row gap-2">
                     <div class="grow flex flex-col gap-2">
-                        <label>What</label>
+                        <label class="font-bold text-white">What</label>
                         <livewire:keyword-combobox />
                     </div>
                     <div class="grow flex flex-col gap-2 justify-end">
                         <input type="text" placeholder="Any classification">
                     </div>
                     <div class="grow flex flex-col gap-2">
-                        <label>Where</label>
+                        <label class="font-bold text-white">Where</label>
                         <input type="text" placeholder="Enter suburb, city, or region">
                     </div>
                     <div class="flex flex-col justify-end">
