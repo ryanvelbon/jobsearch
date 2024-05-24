@@ -1,5 +1,5 @@
 <header x-data="{ open: false}" class="bg-white">
-    <nav class="mx-auto flex max-w-7xl items-center justify-between gap-x-6 py-4 px-4 lg:px-8" aria-label="Global">
+    <nav class="container flex items-center justify-between gap-x-6 py-4" aria-label="Global">
         <div class="flex gap-x-12">
             <a wire:navigate href="{{ route('home') }}">
                 <x-logo class="h-8 text-primary-600" />

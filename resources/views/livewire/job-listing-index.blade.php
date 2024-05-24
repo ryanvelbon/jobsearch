@@ -1,16 +1,16 @@
 <div>
     <section class="py-6 bg-primary-900">
-        <div class="mx-auto max-w-5xl px-6 lg:px-8">
+        <div class="mx-auto max-w-6xl px-6 lg:px-8">
             <form id="search-form" method="GET">
                 <div class="flex flex-row gap-2">
-                    <div class="flex flex-col gap-2">
+                    <div class="grow flex flex-col gap-2">
                         <label>What</label>
                         <livewire:keyword-combobox />
                     </div>
-                    <div class="flex flex-col gap-2 justify-end">
+                    <div class="grow flex flex-col gap-2 justify-end">
                         <input type="text" placeholder="Any classification">
                     </div>
-                    <div class="flex flex-col gap-2">
+                    <div class="grow flex flex-col gap-2">
                         <label>Where</label>
                         <input type="text" placeholder="Enter suburb, city, or region">
                     </div>
@@ -21,7 +21,7 @@
                 <div class="mt-3">
                     <div x-data="{ open: false }" class="relative inline-block text-left">
                         <div>
-                            <button @click="open = !open" type="button" class="inline-flex w-full justify-center gap-x-1.5 rounded-full px-4 py-2 text-sm border-white border-2 shadow-sm" :class="open ? 'bg-white text-gray-700' : 'text-white'">
+                            <button @click="open = !open" type="button" class="inline-flex w-full justify-center gap-x-1.5 rounded-full px-4 py-2 text-sm border-primary-400 hover:border-white border-2 shadow-sm" :class="open ? 'bg-white text-gray-700' : 'text-primary-400 hover:text-white'">
                                 Options
                                 <svg class="-mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                     <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
