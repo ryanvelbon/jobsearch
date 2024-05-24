@@ -36,9 +36,9 @@
                         >
                             <div class="pl-8 py-6 space-y-2" role="none">
                                 @foreach($options['workTypes'] as $option)
-                                    <div class="flex items-center">
-                                        <input wire:model.live="selectedWorkTypes" id="wt-{{ $option->name }}" type="checkbox" value="{{ $option->value }}" class="h-5 w-5 rounded border-gray-500 text-primary-600 focus:ring-primary-600 cursor-pointer">
-                                        <label for="wt-{{ $option->name }}" class="pl-4 py-2 text-gray-600 text-lg cursor-pointer">{{ $option->value }}</label>
+                                    <div class="flex items-center group">
+                                        <input wire:model.live="selectedWorkTypes" id="wt-{{ $option->name }}" type="checkbox" value="{{ $option->value }}" class="h-5 w-5 rounded border-gray-500 group-hover:border-gray-700 text-primary-600 focus:ring-primary-600 cursor-pointer">
+                                        <label for="wt-{{ $option->name }}" class="pl-4 py-2 select-none w-full text-gray-600 group-hover:text-gray-800 text-lg cursor-pointer">{{ $option->value }}</label>
                                     </div>
                                 @endforeach
                             </div>
