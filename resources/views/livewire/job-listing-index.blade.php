@@ -57,7 +57,8 @@
             </div>
             <ul>
                 @forelse($listings as $listing)
-                    <a href="{{ route('listings.show', $listing) }}">
+                    {{-- <a href="{{ route('listings.show', $listing) }}"> --}}
+                    <div wire:click="$set('listingId', {{ $listing->id }})" class="cursor-pointer">
                         <li class="border border-gray-200 hover:border-gray-400 rounded-lg flex justify-between gap-4 px-4 py-6 mb-6 shadow-xl">
                             <div>
                                 <p class="text-gray-700 text-sm">{{ $listing->company->name }}</p>
@@ -77,7 +78,8 @@
                                 </ul>
                             </div>
                         </li>
-                    </a>
+                    </div>
+                    {{-- </a> --}}
                 @empty
                     <div>No results matched your search.</div>
                 @endforelse
@@ -85,10 +87,14 @@
             {{ $listings->links() }}
         </div>
         <div class="mt-4">
-            <div class="h-full rounded-xl p-8 bg-gray-100 text-gray-600">
-                <p class="mt-12 mb-4 text-2xl font-semibold text-gray-700">&larr; Select a job</p>
-                <p class="text-gray-500">Details will be displayed here</p>
-            </div>
+            @if($listingId)
+                <x-job-listing-preview :id="$listingId" />
+            @else
+                <div class="h-full rounded-xl p-8 bg-gray-100 text-gray-600">
+                    <p class="mt-12 mb-4 text-2xl font-semibold text-gray-700">&larr; Select a job</p>
+                    <p class="text-gray-500">Details will be displayed here</p>
+                </div>
+            @endif
         </div>
     </section>
 </div>

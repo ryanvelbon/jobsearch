@@ -18,6 +18,9 @@ class JobListingIndex extends Component
     #[Url( as: 'wt' )]
     public $selectedWorkTypes = [];
 
+    #[Url( as: 'jobId' )]
+    public $listingId;
+
     public function updated()
     {
         $this->resetPage();
