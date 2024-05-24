@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Enums\WorkType;
 use App\Models\JobListing;
 use Livewire\Attributes\Url;
 use Livewire\Component;
@@ -14,6 +15,9 @@ class JobListingIndex extends Component
     #[Url( as: 'q' )]
     public $search = '';
 
+    #[Url( as: 'wt' )]
+    public $selectedWorkTypes = [];
+
     public function updated()
     {
         $this->resetPage();
@@ -24,10 +28,16 @@ class JobListingIndex extends Component
         $listings = JobListing::search($this->search)
             ->with('company', 'tags')
             ->published()
+            ->when($this->selectedWorkTypes, function($query) {
+                $query->whereIn('work_type', $this->selectedWorkTypes);
+            })
             ->paginate(10);
 
         return view('livewire.job-listing-index', [
             'listings' => $listings,
+            'options' => [
+                'workTypes' => WorkType::cases(),
+            ],
         ]);
     }
 }
