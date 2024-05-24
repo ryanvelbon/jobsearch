@@ -32,7 +32,7 @@ class JobListingResource extends Resource
                     ->options(ListingStatus::class),
                 Forms\Components\RichEditor::make('description')
                     ->required()
-                    ->maxLength(2000)
+                    ->maxLength(5000)
                     ->columnSpanFull()
                     ->toolbarButtons([
                         'bold',

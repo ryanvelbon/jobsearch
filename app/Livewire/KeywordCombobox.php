@@ -11,7 +11,7 @@ class KeywordCombobox extends Component
 
     public function render()
     {
-        if (strlen($this->search) > 1) {
+        if (strlen($this->search) >= 1) {
             $results = Tag::query()
                 ->whereType('keyword')
                 ->containing($this->search)

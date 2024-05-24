@@ -49,8 +49,12 @@
             </form>
         </div>
     </section>
-    <section class="container py-8 grid md:grid-cols-3 gap-8">
-        <div class="col-span-2 max-w-2xl">
+    <section class="container grid lg:grid-cols-2 gap-8 mb-4">
+        <div>
+            <div class="my-4 flex justify-between">
+                <span class="text-sm text-gray-600">{{ $listings->total() }} jobs</span>
+                <span class="text-sm text-gray-600">Sorted by <strong>date</strong></span>
+            </div>
             <ul>
                 @forelse($listings as $listing)
                     <a href="{{ route('listings.show', $listing) }}">
@@ -80,8 +84,11 @@
             </ul>
             {{ $listings->links() }}
         </div>
-        <div class="text-gray-200">
-            blank space
+        <div class="mt-4">
+            <div class="h-full rounded-xl p-8 bg-gray-100 text-gray-600">
+                <p class="mt-12 mb-4 text-2xl font-semibold text-gray-700">&larr; Select a job</p>
+                <p class="text-gray-500">Details will be displayed here</p>
+            </div>
         </div>
     </section>
 </div>
