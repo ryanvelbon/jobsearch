@@ -31,6 +31,7 @@ class JobListingIndex extends Component
             ->when($this->selectedWorkTypes, function($query) {
                 $query->whereIn('work_type', $this->selectedWorkTypes);
             })
+            ->orderBy('published_at', 'desc')
             ->paginate(10);
 
         return view('livewire.job-listing-index', [
