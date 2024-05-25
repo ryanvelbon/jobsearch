@@ -29,7 +29,12 @@
                         @endforeach
                     </x-dropdown>
                     <x-dropdown label="Listed any time">
-                        display options here
+                        @foreach($options['nDays'] as $key => $value)
+                            <div class="flex items-center group">
+                                <input id="option-{{ $value }}-days" type="radio" value="{{ $value }}" wire:model.live="nDays" class="h-4 w-4 border-gray-300 text-primary-600 focus:ring-primary-600">
+                                <label for="option-{{ $value }}-days" class="pl-4 py-2 select-none w-full text-gray-600 group-hover:text-gray-800 cursor-pointer">{{ $key }}</label>
+                            </div>
+                        @endforeach
                     </x-dropdown>
                 </div>
             </form>

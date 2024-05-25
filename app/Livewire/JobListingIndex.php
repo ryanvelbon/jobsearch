@@ -50,6 +50,15 @@ class JobListingIndex extends Component
             'listings' => $listings,
             'options' => [
                 'workTypes' => WorkType::cases(),
+                'nDays' => [
+                    'Any time'     => null,
+                    'Today'        => 1,
+                    'Last 3 days'  => 3,
+                    'Last 7 days'  => 7,
+                    'Last 14 days' => 14,
+                    'Last 30 days' => 30,
+                    'Last 90 days' => 90,
+                ],
             ],
         ]);
     }
