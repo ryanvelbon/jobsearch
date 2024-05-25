@@ -45,6 +45,7 @@
                             </div>
                         </div>
                     </div>
+                    <input type="number" wire:model.live="nDays">
                 </div>
             </form>
         </div>
