@@ -59,7 +59,7 @@
                 <ul>
                     @forelse($listings as $listing)
                         {{-- <a href="{{ route('listings.show', $listing) }}"> --}}
-                        <div wire:click="$set('listingId', {{ $listing->id }})" class="cursor-pointer">
+                        <div wire:click="$set('listingId', {{ $listing->id }})" class="cursor-pointer select-none">
                             <li class="border rounded-lg flex justify-between gap-4 px-4 py-6 mb-6 shadow-xl
                                 @if($listing->id === $listingId)
                                     border-primary-500 border-4
@@ -94,14 +94,21 @@
                 {{ $listings->links() }}
             </div>
             <div class="mt-4">
+                <div
+                    x-data="{ scrolled: false }"
+                    @scroll.window="scrolled = window.scrollY > 260"
+                    :class="scrolled ? 'fixed top-4' : ''"
+                    class="h-144 rounded-xl border shadow-xl overflow-y-scroll"
+                >
                 @if($listingId)
                     <x-job-listing-preview :id="$listingId" />
                 @else
-                    <div class="h-full rounded-xl p-8 bg-gray-100 text-gray-600">
+                    <div class="h-full p-8 bg-gray-100 text-gray-600">
                         <p class="mt-12 mb-4 text-2xl font-semibold text-gray-700">&larr; Select a job</p>
                         <p class="text-gray-500">Details will be displayed here</p>
                     </div>
                 @endif
+                </div>
             </div>
         </section>
     @else
