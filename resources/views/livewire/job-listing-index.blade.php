@@ -59,7 +59,13 @@
                 @forelse($listings as $listing)
                     {{-- <a href="{{ route('listings.show', $listing) }}"> --}}
                     <div wire:click="$set('listingId', {{ $listing->id }})" class="cursor-pointer">
-                        <li class="border border-gray-200 hover:border-gray-400 rounded-lg flex justify-between gap-4 px-4 py-6 mb-6 shadow-xl">
+                        <li class="border rounded-lg flex justify-between gap-4 px-4 py-6 mb-6 shadow-xl
+                            @if($listing->id === $listingId)
+                                border-primary-500 border-4
+                            @else
+                                border-gray-200 hover:border-gray-400
+                            @endif
+                        ">
                             <div>
                                 <p class="text-gray-700 text-sm">{{ $listing->company->name }}</p>
                                 <p class="font-bold text-lg text-nowrap">{{ $listing->title }}</p>
