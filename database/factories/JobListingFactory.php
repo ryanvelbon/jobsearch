@@ -16,7 +16,7 @@ class JobListingFactory extends Factory
 
         return [
             'title' => fake()->jobTitle,
-            'description' => fake()->paragraphs(3, true),
+            'description' => $this->generateDescription(),
             'work_type' => fake()->randomElement(WorkType::cases()),
             'company_id' => \App\Models\Company::inRandomOrder()->first(),
             'salary' => round(fake()->randomFloat(2, 500, 5000) / 50) * 50,
@@ -26,5 +26,29 @@ class JobListingFactory extends Factory
             'published_at' => $createdAt,
             // 'expired_at' => fake()->dateTimeBetween('now', '+1 year'),
         ];
+    }
+
+    private function generateDescription(): string
+    {
+        $html = "";
+        $html .= "<p><strong>" . fake()->paragraph() . "</strong></p>";
+        $html .= "<p>" . fake()->paragraph() . "</p>";
+
+        $sections = ['Responsibilities', 'Qualifications & Skills', 'Work Experience', 'Key Capabilities', 'Benefits'];
+
+        shuffle($sections);
+
+        foreach (array_slice($sections, 0, 3) as $section) {
+            $html .= "<h3>$section:</h3>";
+            $html .= "<ul>";
+            for ($i=0; $i < rand(3, 7) ; $i++) {
+                $html .= "<li>" . fake()->sentence() . "</li>";
+            }
+            $html .= "</ul>";
+        }
+
+        $html .= "<p>" . fake()->paragraph() . "</p>";
+
+        return $html;
     }
 }
