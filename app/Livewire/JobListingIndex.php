@@ -21,9 +21,11 @@ class JobListingIndex extends Component
     #[Url( as: 'jobId' )]
     public $listingId;
 
-    public function updated()
+    public function updated($property)
     {
-        $this->resetPage();
+        if ($property !== 'listingId') {
+            $this->resetPage();
+        }
     }
 
     public function render()
