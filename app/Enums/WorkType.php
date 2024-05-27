@@ -25,7 +25,7 @@ enum WorkType: string implements HasLabel, HasColor
     public function getColor(): string | array | null
     {
         return match($this) {
-            self::FullTime => 'gray',
+            self::FullTime => 'info',
             self::PartTime => 'gray',
             self::Contract => 'gray',
             self::Casual   => 'gray',

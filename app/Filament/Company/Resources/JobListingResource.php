@@ -70,19 +70,26 @@ class JobListingResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
+                    ->limit(30)
                     ->searchable(),
-                Tables\Columns\BadgeColumn::make('work_type'),
+                Tables\Columns\BadgeColumn::make('work_type')
+                    ->alignCenter(),
                 Tables\Columns\TextColumn::make('salary')
-                    ->numeric()
-                    ->money('EUR')
+                    ->numeric(decimalPlaces: 0)
+                    ->prefix('€')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('closing_date')
+                    ->label('closes')
                     ->date()
+                    ->size('xs')
                     ->sortable(),
-                Tables\Columns\BadgeColumn::make('status'),
+                Tables\Columns\BadgeColumn::make('status')
+                    ->alignCenter(),
                 Tables\Columns\TextColumn::make('published_at')
+                    ->label('published')
                     ->dateTime()
                     ->since()
+                    ->size('xs')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('expired_at')
                     ->dateTime()
@@ -100,7 +107,7 @@ class JobListingResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
-            ->defaultSort('published_at', 'desc')
+            ->defaultSort('created_at', 'desc')
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
             ])
