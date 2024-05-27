@@ -25,43 +25,49 @@ class JobListingResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('title')
-                    ->required()
-                    ->maxLength(80),
-                Forms\Components\Select::make('status')
-                    ->options(ListingStatus::class),
-                Forms\Components\RichEditor::make('description')
-                    ->required()
-                    ->maxLength(5000)
-                    ->columnSpanFull()
-                    ->toolbarButtons([
-                        'bold',
-                        'bulletList',
-                        'italic',
-                        'orderedList',
-                        'redo',
-                        'strike',
-                        'underline',
-                        'undo',
-                    ]),
-                Forms\Components\Select::make('work_type')
-                    ->options(WorkType::class),
-                Forms\Components\TextInput::make('salary')
-                    ->numeric()
-                    ->prefix('€'),
-                Forms\Components\TextInput::make('min_salary')
-                    ->numeric()
-                    ->prefix('€'),
-                Forms\Components\TextInput::make('max_salary')
-                    ->numeric()
-                    ->prefix('€'),
-                Forms\Components\DatePicker::make('closing_date'),
-                Forms\Components\SpatieTagsInput::make('skills')
-                    ->label('Skills')
-                    ->type('skill'),
-                Forms\Components\SpatieTagsInput::make('keywords')
-                    ->label('Keywords')
-                    ->type('keyword'),
+                Forms\Components\Grid::make(['sm' => 2, 'xl' => 4])
+                    ->schema([
+                        Forms\Components\TextInput::make('title')
+                            ->columnSpan(['sm' => 2])
+                            ->required()
+                            ->maxLength(80),
+                        Forms\Components\DatePicker::make('closing_date'),
+                        Forms\Components\Select::make('status')
+                            ->options(ListingStatus::class),
+                        Forms\Components\RichEditor::make('description')
+                            ->required()
+                            ->maxLength(5000)
+                            ->columnSpanFull()
+                            ->toolbarButtons([
+                                'bold',
+                                'bulletList',
+                                'italic',
+                                'orderedList',
+                                'redo',
+                                'strike',
+                                'underline',
+                                'undo',
+                            ]),
+                        Forms\Components\Select::make('work_type')
+                            ->options(WorkType::class),
+                        Forms\Components\TextInput::make('salary')
+                            ->numeric()
+                            ->prefix('€'),
+                        Forms\Components\TextInput::make('min_salary')
+                            ->numeric()
+                            ->prefix('€'),
+                        Forms\Components\TextInput::make('max_salary')
+                            ->numeric()
+                            ->prefix('€'),
+                        Forms\Components\SpatieTagsInput::make('skills')
+                            ->columnSpan(['xl' => 2])
+                            ->label('Skills')
+                            ->type('skill'),
+                        Forms\Components\SpatieTagsInput::make('keywords')
+                            ->columnSpan(['xl' => 2])
+                            ->label('Keywords')
+                            ->type('keyword'),
+                    ])
             ]);
     }
 
