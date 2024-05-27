@@ -56,7 +56,12 @@ class JobListingResource extends Resource
                     ->numeric()
                     ->prefix('€'),
                 Forms\Components\DatePicker::make('closing_date'),
-                Forms\Components\SpatieTagsInput::make('tags'),
+                Forms\Components\SpatieTagsInput::make('skills')
+                    ->label('Skills')
+                    ->type('skill'),
+                Forms\Components\SpatieTagsInput::make('keywords')
+                    ->label('Keywords')
+                    ->type('keyword'),
             ]);
     }
 
