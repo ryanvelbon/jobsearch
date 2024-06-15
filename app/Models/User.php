@@ -79,11 +79,11 @@ class User extends Authenticatable implements FilamentUser, HasName
 
     public function isCandidate()
     {
-        return $this->account_type->value === 'candidate';
+        return $this->account_type === AccountType::Candidate;
     }
 
     public function isCompany()
     {
-        return $this->account_type->value === 'company';
+        return $this->account_type === AccountType::Company;
     }
 }
